@@ -1,0 +1,19 @@
+{
+  "name": "cronify-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev":"nodemon server.js"
+  },
+  "keywords": [],
+  "author": "agastya gaur",
+  "license": "ISC",
+  "description": "this is a cronify server",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
