@@ -19,8 +19,20 @@ model User {
 
 model CronJob {
   id      String   @id @default(cuid())
-  name    String
+  title    String?
   schedule String
+  url      String
+  isActive Boolean
   userId  String
   user    User     @relation(fields: [userId], references: [id])
+  logs    Log[]
+  createdAt      DateTime @default(now())
+}
+
+model Log {
+    id        String      @id @default(cuid())
+  cronJobId String
+  cronJob   CronJob     @relation(fields: [cronJobId], references: [id])
+  time      DateTime
+  createdAt DateTime    @default(now())
 }
