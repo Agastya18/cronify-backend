@@ -5,6 +5,7 @@ import cron from "node-cron";
 export const createCronjob =async(req,res)=>{
     try {
         const result = CronJobCreateSchema.safeParse(req.body);
+       // console.log(result);
 
         if (!result.success) {
           console.error("Error validating CronJobCreate schema : ", result.error);
@@ -25,16 +26,17 @@ export const createCronjob =async(req,res)=>{
         const cronExpression = getCronExpression(schedule)
       const job= cron.schedule(cronExpression,async()=>{
 
-       await execute(url)
-       
+      await  execute(url)
+       console.log(url)
+
        
        })
-       await prisma.log.create({
-        data:{
-            cronJobId: newJob.id
-        }
-       })
-       job.start()
+    //    await prisma.log.create({
+    //     data:{
+    //         cronJobId: newJob.id
+    //     }
+    //    })
+       
        res.status(200).json({ message: "Cron job created!!" });
 
        
