@@ -33,6 +33,6 @@ model Log {
     id        String      @id @default(cuid())
   cronJobId String
   cronJob   CronJob     @relation(fields: [cronJobId], references: [id])
-  time      DateTime
+  isSuccess  Boolean
   createdAt DateTime    @default(now())
 }
